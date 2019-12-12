@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {token, category, levels, setURL} from './assets/config'
 import Welcome from './container/Welcome'
-import { throwStatement } from '@babel/types';
+import axios from 'axios'
 
 export default class App extends Component {
   state={
@@ -14,12 +14,13 @@ export default class App extends Component {
     url: setURL,
     gameState: 'start',
     passed: false,
-    gameLevel: 1
+    gameLevel: 1,
+    questions: {}
   }
    async componentDidMount(){
    this.setState({
      token : await token(),
-     category: await category()
+     categories: await category()
    })
   }
   choosing (el, name){
@@ -35,9 +36,31 @@ export default class App extends Component {
     }
   }
 
+  getData = async() =>{
+    let url = setURL(this.state.sCategory, this.state.sLevel, this.state.token)
+    let res = await axios.get(url.url)
+    if (res.data.response_code !== 0){
+      res = await axios.get(url.backupURL)
+      if (res.data.results){
+        this.setState({
+          questions: res.data.results,
+          gameState: 'play'
+        })
+      }
+    }
+    if(res.data.results){
+      this.setState({
+        questions: res.data.results,
+        gameState: 'play'
+      })
+    }
+  
+  }
+
+
 changeGameState(c){
   if(c === 'play'){
-  //  getData()
+   this.getData()
   }
   if(c === 'failed'){
     this.setState({
@@ -60,24 +83,25 @@ changeGameState(c){
     })
   }
 }
-getData(){
-  
-}
+
 
   render() {
     console.log(this.state.token)
     console.log(this .state.categories)
     console.log(this.state.level)
+    console.log(this.state.questions)
+    console.log(this.state.gameState)
    
     return (
       <div>
         {this.state.gameState === 'start'?
          <Welcome
-         categories = {this.state.categories}
+         category = {this.state.categories}
          level={this.state.level}
          selectedCategory = {this.state.sCategory}
          selectedLevel={this.state.sLevel}
          choosing = {(el,name) => this.choosing(el,name)}
+        //  token = {this.state.token}
           /> 
          : null}
       </div>

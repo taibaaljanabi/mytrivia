@@ -7,6 +7,8 @@ export default class Welcome extends Component {
             <div>
                 <h1>Welcome to this stupid trivia</h1>
                 <h2>{this.props.selectedLevel}</h2>
+                {/* <h2>{this.props.token}</h2> */}
+                <option ></option>
             </div>
         )
     }
