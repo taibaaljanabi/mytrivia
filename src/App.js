@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {token, category, levels, setURL} from './assets/config'
 import Welcome from './container/Welcome'
 import axios from 'axios'
+import Play from './container/Play'
+import Result from './container/Result'
 
 export default class App extends Component {
   state={
@@ -10,7 +12,7 @@ export default class App extends Component {
     categories: {},
     sCategory: '',
     level: levels,
-    sLevel: 'easy',
+    sLevel: '',
     url: setURL,
     gameState: 'start',
     passed: false,
@@ -91,19 +93,43 @@ changeGameState(c){
     console.log(this.state.level)
     console.log(this.state.questions)
     console.log(this.state.gameState)
+
+    let game = this.state.gameState === 'play' ? 
+       <Play 
+       questions = {this.state.questions}
+       level= {this.state.level}
+       finished = {(c, score) => this.changeGameState(c,score)}
+       />: 
+       this.state.gameState === 'end'?
+       <Result 
+        state = {this.state}
+        click = {(c)=> this.changeGameState(c)}
+        />: 
+        this.state.gameState === 'start'?
+        <Welcome 
+        categories={this.state.categories}
+        level = {this.state.level}
+        selectedCat = {this.state.sCategory}
+        selectedLev = {this.state.sLevel}
+        click = {(c)=> this.changeGameState(c)}
+        choosing = {(el, name)=> this.choosing(el,name)}/>
+        : null
+
+
    
     return (
       <div>
-        {this.state.gameState === 'start'?
+        {/* {this.state.gameState === 'start'?
          <Welcome
          category = {this.state.categories}
          level={this.state.level}
          selectedCategory = {this.state.sCategory}
          selectedLevel={this.state.sLevel}
          choosing = {(el,name) => this.choosing(el,name)}
-        //  token = {this.state.token}
+         token = {this.state.token}
           /> 
-         : null}
+         : null} */}
+         {game}
       </div>
     )
   }
