@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 
+
 export default class Welcome extends Component {
      
     click(){
@@ -10,14 +11,15 @@ export default class Welcome extends Component {
     render() {
         
         return (
-            <div>
+            <Fragment>
                 <h1>Welcome to this stupid trivia</h1>
                 {/* <h2>{this.props.selectedLev}</h2> */}
                 {/* <h2>{this.props.token}</h2> */}
                {/* <h2>{this.props.categories}</h2>  */}
                 
                 <option ></option>
-            </div>
+                <button onClick={()=>this.click()} type='button' className='btn btn-primary'>Play Game</button>
+                </Fragment>
         )
     }
 }
