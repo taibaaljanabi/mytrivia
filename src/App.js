@@ -4,6 +4,7 @@ import Welcome from './container/Welcome'
 import axios from 'axios'
 import Play from './container/Play'
 import Result from './container/Result'
+import './App.css'
 
 export default class App extends Component {
   state={
@@ -118,7 +119,8 @@ changeGameState(c){
 
    
     return (
-      <div>
+      <div className='App'>
+      <div className='App-header'>
         {/* {this.state.gameState === 'start'?
          <Welcome
          category = {this.state.categories}
@@ -130,6 +132,7 @@ changeGameState(c){
           /> 
          : null} */}
          {game}
+         </div>
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import Header from '../components/Header'
 
 
 export default class Welcome extends Component {
@@ -12,14 +13,22 @@ export default class Welcome extends Component {
         
         return (
             <Fragment>
-                <h1>Welcome to this stupid trivia</h1>
-                {/* <h2>{this.props.selectedLev}</h2> */}
-                {/* <h2>{this.props.token}</h2> */}
-               {/* <h2>{this.props.categories}</h2>  */}
+                <div className='container'>
+                <Header/>
+                <div className='selectOptions'>
+                <h1>Select game options</h1>
                 
-                <option ></option>
-                <button onClick={()=>this.click()} type='button' className='btn btn-primary'>Play Game</button>
-                </Fragment>
+
+                
+                
+                <button 
+                onClick={()=>this.click()} 
+                type='button' 
+                className='btn btn-primary'
+                >Play Game</button>
+                </div>
+                </div>
+             </Fragment>
         )
     }
 }
