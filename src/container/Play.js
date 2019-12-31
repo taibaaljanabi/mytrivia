@@ -15,10 +15,9 @@ export default class Play extends Component {
     timer(){
         setinterval(()=>{
         if (this.state.time <= 0){
-            this.setState
-
+            this.setState({time: this.state.time - 1})
         }
-        })
+        }, 1000)
     }
     render() {
         return (
