@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 export default class Play extends Component {
     state={
         questions: {},
-        time: 15
+        time: 15,
+        questionNum: ''
     }
 
     componentDidMount(){
@@ -13,7 +14,7 @@ export default class Play extends Component {
         this.timer()
     }
     timer(){
-        setinterval(()=>{
+        setInterval(()=>{
         if (this.state.time <= 0){
             this.setState({time: this.state.time - 1})
         }
@@ -22,7 +23,7 @@ export default class Play extends Component {
     render() {
         return (
             <div>
-                <h1></h1>
+                <h1>{this.state.questions}</h1>
             </div>
         )
     }
