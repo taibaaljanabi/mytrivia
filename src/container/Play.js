@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
+import Check from '../components/Check'
+
 
 export default class Play extends Component {
     state={
@@ -39,7 +41,7 @@ export default class Play extends Component {
           this.setState({
               answer: answer,
               answerComponent: 'You are wrong',
-              time: -1
+              time:  - 1
           })
       }
     }
@@ -69,12 +71,44 @@ export default class Play extends Component {
             qtext = this.state.questions[this.state.questionNum - 1].question
         }
         console.log(this.state.questions[this.state.questionNum])
+
+        let questions = <Fragment>
+                        <div className='contents'>
+                        <h3>Question {this.state.questionNum}</h3>
+                        <h3 className='question'>{decodeURIComponent(qtext)}</h3>
+                        </div>
+                        <Check
+                        outOfTime={this.state.time}
+                        answerComponent={this.state.answerComponent}
+                        continue = {()=>{this.continue()}}
+                        checkAns={(a)=>{this.checkAns(a)}}
+                        answer={this.state.answer}
+                        />
+                      </Fragment>
         return (
 
             
-            <h1>{decodeURIComponent(qtext)}</h1>
+           <Fragment>
+               <div className='container'>
+               <div className='header'>
+               <h1>Trivia</h1>
+               <div className='row'>
+               <div className='col-md-4'>
+               <h5>Level: <b>{this.props.level}</b></h5>
+               </div>
+               <div className='col-md-4'>
+               <h5> Time left: <b>{this.state.answer === "True" ? 0 : this.state.answer === "False" ? 0 : this.state.time}</b></h5>
+               </div>
+               <div className="col-md-4">
+                <h5>Score: <b>{this.state.score}</b></h5>
+              </div>
+               </div>
+               </div>
+               {questions}
+               </div>
+           </Fragment>
 
           
-        )
-    }
+        )}
+        
 }
