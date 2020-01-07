@@ -94,7 +94,9 @@ export default class Play extends Component {
                <h1>Trivia</h1>
                <div className='row'>
                <div className='col-md-4'>
-               <h5>Level: <b>{this.props.level}</b></h5>
+               <h5>Level: <b>{this.props.level.map((i, item)=>{
+                    
+               })}</b></h5>
                </div>
                <div className='col-md-4'>
                <h5> Time left: <b>{this.state.answer === "True" ? 0 : this.state.answer === "False" ? 0 : this.state.time}</b></h5>
@@ -110,5 +112,5 @@ export default class Play extends Component {
 
           
         )}
-        
+
 }
