@@ -33,14 +33,14 @@ export default class Play extends Component {
       if (a === answer){
           this.setState({
               answer : answer,
-              answerComponent: 'You are correct',
+              answerComponent: 'correct',
               score: this.state.score + 1,
               time: -1
           })
       }else if(a !== answer){
           this.setState({
               answer: answer,
-              answerComponent: 'You are wrong',
+              answerComponent: 'wrong',
               time:  - 1
           })
       }
@@ -48,9 +48,10 @@ export default class Play extends Component {
 
     // checking the game state to continue or not 
     continue(){
-        let passed = ''
+        let passed 
         if (this.state.questionNum === 10){
             this.state.score <= 6 ? passed = 'Failed' : passed = 'Passed'
+            this.props.finished(passed)
         }else{
             this.setState({
                 time: 15,

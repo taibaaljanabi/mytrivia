@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import {token, category, levels, setURL} from './assets/config'
-import Welcome from './container/Welcome'
+import Welcome from './containers/Welcome'
 import axios from 'axios'
-import Play from './container/Play'
-import Result from './container/Result'
+import Play from './containers/Play'
+import Result from './containers/Result'
 import './App.css'
 
 export default class App extends Component {
