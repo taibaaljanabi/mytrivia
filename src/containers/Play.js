@@ -13,6 +13,14 @@ export default class Play extends Component {
 
         
     }
+    timer(){
+        setInterval(()=>{
+        if (this.state.time <= 0)return
+         this.setState({
+             time: this.state.time - 1
+            })
+        }, 1000)
+    }
 
     componentDidMount(){
         this.setState({
@@ -20,13 +28,7 @@ export default class Play extends Component {
         })
         this.timer()
     }
-    timer(){
-        setInterval(()=>{
-        if (this.state.time <= 0){
-            this.setState({time: this.state.time - 1})
-        }
-        }, 1000)
-    }
+  
     // the function that checks the answer 
     checkAns(a){
       let answer = this.state.questions[this.state.questionNum - 1].correct_answer
@@ -50,7 +52,7 @@ export default class Play extends Component {
     continue(){
         let passed 
         if (this.state.questionNum === 10){
-            this.state.score <= 6 ? passed = 'Failed' : passed = 'Passed'
+            this.state.score <= 6 ? passed = 'failed' : passed = 'passed'
             this.props.finished(passed)
         }else{
             this.setState({
