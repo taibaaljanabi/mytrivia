@@ -82,9 +82,9 @@ export default class Play extends Component {
                         <div className='contents'>
                         
                         <h3>Question {this.state.questionNum}</h3>
-                        <Bounce left>
+                        {/* <Bounce left> */}
                         <h3 className='question'>{decodeURIComponent(qtext)}</h3>
-                        </Bounce>
+                        {/* </Bounce> */}
                         </div>
                        
                         <Check

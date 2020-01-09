@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react'
+import Zoom from 'react-reveal/Zoom';
 
 export default (props) => {
   
@@ -24,7 +25,9 @@ export default (props) => {
 
   let right = <div className="container">
                 <div className="header result">
+                  <Zoom left>
                   <h2>You are correct!</h2>
+                  </Zoom>
                   <p></p>
                   <p 
                     className='TFbtn'
