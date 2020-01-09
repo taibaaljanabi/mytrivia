@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Check from '../components/Check'
+import Bounce from 'react-reveal/Bounce'
+
 
 
 export default class Play extends Component {
@@ -76,10 +78,15 @@ export default class Play extends Component {
         console.log(this.state.questions[this.state.questionNum])
 
         let questions = <Fragment>
+                       
                         <div className='contents'>
+                        
                         <h3>Question {this.state.questionNum}</h3>
+                        <Bounce left>
                         <h3 className='question'>{decodeURIComponent(qtext)}</h3>
+                        </Bounce>
                         </div>
+                       
                         <Check
                         outOfTime={this.state.time}
                         answerComponent={this.state.answerComponent}

@@ -7,7 +7,7 @@ export default (props) => {
                       <h2>You ran out of time!</h2>
                       <p>Please think faster.</p>
                       <p 
-                        className='btn-ans'
+                        className='TFbtn'
                         onClick={()=>props.continue()}>Continue</p>
                     </div>
                   </div>
@@ -17,7 +17,7 @@ export default (props) => {
                   <h2>You are wrong!</h2>
                   <p>The correct answer is {props.answer} </p>
                   <p 
-                    className='btn-ans'
+                    className='TFbtn'
                     onClick={()=>props.continue()}>Continue</p>
                 </div>
               </div>
@@ -27,19 +27,19 @@ export default (props) => {
                   <h2>You are correct!</h2>
                   <p></p>
                   <p 
-                    className='btn-ans'
+                    className='TFbtn'
                     onClick={()=>props.continue()}>Continue</p>
                 </div>
               </div>
 
   let options = <div className="answers selectOptions row">
                   <div className="col-md-5 btn-ans">
-                    <p
+                    <p className='TFbtn'
                     onClick={()=>props.checkAns('True')}>True</p>
                   </div>
                   <div className="col-md-2 btn-ans"></div>
                   <div className = "col-md-5 btn-ans" >
-                    <p
+                    <p className='TFbtn'
                       onClick={()=>props.checkAns('False')}>False</p>
                   </div>
                 </div> 

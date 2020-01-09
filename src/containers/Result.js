@@ -1,4 +1,5 @@
 import React, { Component,Fragment } from 'react';
+import Bounce from 'react-reveal/Bounce'
 
 export default class Result extends Component {
   render() {
@@ -12,8 +13,10 @@ export default class Result extends Component {
     if(!this.props.state.passed === true){
 
      component = <Fragment>
+       <Bounce left>
      <h1>Sorry!</h1>
      <p>You did not pass the quiz</p>
+     </Bounce>
      <p onClick={()=> this.props.click('start')}>Play again</p>
 
       </Fragment>
