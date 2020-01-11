@@ -8,7 +8,7 @@ export default class Result extends Component {
     let  component = <Fragment>
       <h1>Congratulations!</h1>
       <p>You passed the level</p>
-      <p onclick={() => this.props.click('start')}>Play again</p>
+      <p onClick={() => this.props.click('start')}>Play again</p>
     </Fragment>
     if(!this.props.state.passed === true){
 
