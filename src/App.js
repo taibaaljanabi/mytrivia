@@ -100,6 +100,7 @@ changeGameState(c){
        questions = {this.state.questions}
        level= {this.state.level}
        finished = {(c, score) => this.changeGameState(c,score)}
+       level = {this.state.gameLevel}
        />: 
        this.state.gameState === 'end'?
        <Result 

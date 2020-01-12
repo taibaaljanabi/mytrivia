@@ -13,7 +13,7 @@ export default class Result extends Component {
      
       className ='PlayA' 
       onClick={() => this.props.click('start')}
-      >Play again</button>
+      >Continue</button>
      
     </Fragment>
     if(!this.props.state.passed === true){
