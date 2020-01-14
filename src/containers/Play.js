@@ -54,7 +54,7 @@ export default class Play extends Component {
     continue(){
         let passed 
         if (this.state.questionNum === 10){
-            this.state.score <= 6 ? passed = 'failed' : passed = 'passed'
+            this.state.score <= 2 ? passed = 'failed' : passed = 'passed'
             this.props.finished(passed)
         }else{
             this.setState({
